@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Wood & Art Joinery - Preserving the tradition of handcrafted furniture. Custom woodworking, restoration, and art pieces.">
+    <title>Wood & Art Joinery</title>
+
+    <!-- Google Fonts: Lato (Sans-Serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Variables & Reset --- */
+        :root {
+            --color-primary: #4E342E;    /* Dark Brown */
+            --color-secondary: #8D6E63;  /* Medium Brown */
+            --color-accent: #D7CCC8;     /* Beige/Light Brown */
+            --color-bg: #F5F5F5;         /* Off-white */
+            --color-text: #3E2723;       /* Very Dark Brown */
+            --color-white: #FFFFFF;
+
+            --font-main: 'Lato', sans-serif;
+
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            line-height: 1.2;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        p {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            border-radius: 4px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- Layout Utilities --- */
+        .container {
+            width: 90%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: var(--spacing-md) 0;
+        }
+
+        .section {
+            padding: var(--spacing-lg) 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border-radius: 4px;
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn:hover {
+            background-color: var(--color-secondary);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--color-white);
+            color: var(--color-white);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--color-white);
+            color: var(--color-primary);
+        }
+
+        /* --- Header/Hero --- */
+        .hero {
+            /* Fallback to gradient if image fails or for offline support */
+            background: linear-gradient(rgba(62, 39, 35, 0.8), rgba(62, 39, 35, 0.8)), repeating-linear-gradient(45deg, #4E342E 0, #4E342E 10px, #3E2723 10px, #3E2723 20px);
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-white);
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-md);
+            font-weight: 300;
+        }
+
+        /* --- About Section --- */
+        .about {
+            background-color: var(--color-white);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--color-secondary);
+            margin: 0.5rem auto 0;
+        }
+
+        /* --- Services Section --- */
+        .services {
+            background-color: var(--color-bg);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .service-card {
+            background-color: var(--color-white);
+            padding: var(--spacing-md);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* --- Portfolio Section (Masonry) --- */
+        .portfolio {
+            background-color: var(--color-white);
+        }
+
+        .portfolio-grid {
+            column-count: 1;
+            column-gap: var(--spacing-md);
+        }
+
+        .portfolio-item {
+            break-inside: avoid; /* Prevent item from being split across columns */
+            margin-bottom: var(--spacing-md);
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(78, 52, 46, 0.8);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        /* --- Contact/Footer --- */
+        .footer {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            padding: var(--spacing-lg) 0;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #25D366;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 12px 24px;
+            border-radius: 50px;
+            transition: background-color 0.3s;
+            margin-top: 1rem;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--color-accent);
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--color-white);
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-top: 1rem;
+            font-style: normal;
+        }
+
+        /* --- Media Queries --- */
+        @media (min-width: 768px) {
+            .hero-content h1 {
+                font-size: 4rem;
+            }
+
+            .portfolio-grid {
+                column-count: 2;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .portfolio-grid {
+                column-count: 3;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header/Hero -->
+    <header class="hero">
+        <div class="hero-content container">
+            <h1>Wood & Art Joinery</h1>
+            <p>Preserving the tradition of handcrafted furniture</p>
+            <a href="#portfolio" class="btn btn-outline">View Portfolio</a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container about-content">
+            <h2 class="section-title">Our Story</h2>
+            <p>
+                Welcome to Wood & Art Joinery, where passion meets precision. For over two decades, we have been dedicated to the art of traditional woodworking, crafting pieces that tell a story and last a lifetime.
+            </p>
+            <p>
+                In an era of mass production, we stand firmly by the values of artisanal craftsmanship. Every table, chair, and cabinet that leaves our shop is a testament to patience, skill, and a deep respect for the natural materials we work with. We believe that furniture should not just fill a space, but elevate it, bringing warmth and character to your home.
+            </p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section services">
+        <div class="container">
+            <h2 class="section-title text-center">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="service-icon">&#129681;</span> <!-- Wood/Chair Unicode placeholder -->
+                    <h3>Custom Furniture</h3>
+                    <p>Bespoke pieces designed to fit your space and style perfectly. From dining tables to built-in wardrobes.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">&#128296;</span> <!-- Hammer/Tool Unicode placeholder -->
+                    <h3>Restoration</h3>
+                    <p>Breathing new life into beloved antiques. We carefully repair and refinish to preserve history.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">&#127912;</span> <!-- Palette/Art Unicode placeholder -->
+                    <h3>Art Pieces</h3>
+                    <p>Unique, sculptural wood creations that serve as functional art for distinct interiors.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio/Gallery Section -->
+    <section id="portfolio" class="section portfolio">
+        <div class="container">
+            <h2 class="section-title text-center">Selected Works</h2>
+            <p class="text-center" style="margin-bottom: 2rem;">A collection of our finest handcrafted projects.</p>
+
+            <div class="portfolio-grid">
+                <!-- Item 1: Tall -->
+                <div class="portfolio-item">
+                    <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='600' viewBox='0 0 400 600'%3E%3Crect fill='%238D6E63' width='400' height='600'/%3E%3Ctext fill='white' x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-family='sans-serif' font-size='24'%3EMahogany Cabinet%3C/text%3E%3C/svg%3E" alt="Mahogany Cabinet">
+                    <div class="portfolio-overlay">Mahogany Cabinet</div>
+                </div>
+                <!-- Item 2: Wide -->
+                <div class="portfolio-item">
+                    <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect fill='%23A1887F' width='600' height='400'/%3E%3Ctext fill='white' x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-family='sans-serif' font-size='24'%3EOak Dining Table%3C/text%3E%3C/svg%3E" alt="Oak Dining Table">
+                    <div class="portfolio-overlay">Oak Dining Table</div>
+                </div>
+                <!-- Item 3: Square -->
+                <div class="portfolio-item">
+                    <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500' viewBox='0 0 500 500'%3E%3Crect fill='%235D4037' width='500' height='500'/%3E%3Ctext fill='white' x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-family='sans-serif' font-size='24'%3ECarved Chair%3C/text%3E%3C/svg%3E" alt="Carved Chair">
+                    <div class="portfolio-overlay">Carved Chair</div>
+                </div>
+                <!-- Item 4: Tall -->
+                <div class="portfolio-item">
+                    <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='550' viewBox='0 0 400 550'%3E%3Crect fill='%23795548' width='400' height='550'/%3E%3Ctext fill='white' x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-family='sans-serif' font-size='24'%3EBookshelf%3C/text%3E%3C/svg%3E" alt="Bookshelf">
+                    <div class="portfolio-overlay">Custom Bookshelf</div>
+                </div>
+                <!-- Item 5: Wide -->
+                <div class="portfolio-item">
+                    <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='350' viewBox='0 0 600 350'%3E%3Crect fill='%238D6E63' width='600' height='350'/%3E%3Ctext fill='white' x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-family='sans-serif' font-size='24'%3ECoffee Table%3C/text%3E%3C/svg%3E" alt="Coffee Table">
+                    <div class="portfolio-overlay">Walnut Coffee Table</div>
+                </div>
+                <!-- Item 6: Square -->
+                <div class="portfolio-item">
+                    <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='450' height='450' viewBox='0 0 450 450'%3E%3Crect fill='%236D4C41' width='450' height='450'/%3E%3Ctext fill='white' x='50%25' y='50%25' text-anchor='middle' dy='.3em' font-family='sans-serif' font-size='24'%3ENightstand%3C/text%3E%3C/svg%3E" alt="Nightstand">
+                    <div class="portfolio-overlay">Modern Nightstand</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer/Contact -->
+    <footer id="contact" class="footer">
+        <div class="container footer-content">
+            <h3>Wood & Art Joinery</h3>
+
+            <address class="contact-info">
+                123 Artisan Way, Woodworking District<br>
+                City, Country, 12345
+            </address>
+
+            <a href="https://wa.me/5561991754280" class="whatsapp-btn" target="_blank">
+                Chat on WhatsApp (+55 61 99175-4280)
+            </a>
+
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+                <a href="#">Pinterest</a>
+            </div>
+
+            <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.7;">
+                &copy; 2023 Wood & Art Joinery. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
